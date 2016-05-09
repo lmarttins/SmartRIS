@@ -1,0 +1,22 @@
+{
+  "name": "SmartRIS",
+  "version": "1.1.5",
+  "homepage": "https://github.com/silexphp/Silex-Skeleton",
+  "authors": [
+    "Leandro Martins <lmarttinssilva@gmail.com>"
+  ],
+  "description": "Módulo do sistema SmartRIS para geração de guias",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.5.5",
+    "bootstrap": "~3.3.6"
+  }
+}
