@@ -14,6 +14,13 @@ $app->get('/', function () use ($app) {
 ->bind('homepage')
 ;
 
+$app->get('/guides/', function () use ($app) {
+    $sql = "SELECT * FROM guides";
+    $guides = $app['db']->fetchAssoc($sql);
+    var_dump($guides);
+    exit;
+});
+
 $app->error(function (\Exception $e, $code) use ($app) {
     if ($app['debug']) {
         return;
