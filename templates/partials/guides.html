@@ -1,0 +1,19 @@
+<div ng-controller="GuidesController">
+    <h2>Guias</h2>
+    <a class="btn btn-warning pull-right" style="position:relative; top:-45px;">Nova guia</a>
+    <div class="panel panel-default">
+        <div class="panel-heading">Lista de Guias</div> 
+        <table class="table">
+            <thead>
+                <th>#</th>
+                <th>Nome</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="guide in guides">
+                    <td>{[% guide.id %]}</td>
+                    <td>{[% guide.name %]}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

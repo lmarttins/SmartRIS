@@ -14,11 +14,15 @@ $app->get('/', function () use ($app) {
 ->bind('homepage')
 ;
 
-$app->get('/guides/', function () use ($app) {
-    $sql = "SELECT * FROM guides";
-    $guides = $app['db']->fetchAssoc($sql);
-    var_dump($guides);
-    exit;
+$app->get('/api/patients/{name}', function ($name) use ($app) {
+    $sql = "select id, name from patients where name like '%ALICE DAVI%'";
+    $patients = $app['db']->fetchAssoc($sql);
+    return new JsonResponse(array($patients));
+});
+
+$app->get('/api/guides/', function () use ($app) {
+    $guides = $app['db']->fetchAssoc('select * from guides');
+    return new JsonResponse(array($guides));
 });
 
 $app->error(function (\Exception $e, $code) use ($app) {
@@ -26,7 +30,6 @@ $app->error(function (\Exception $e, $code) use ($app) {
         return;
     }
 
-    // 404.html, or 40x.html, or 4xx.html, or error.html
     $templates = array(
         'errors/'.$code.'.html',
         'errors/'.substr($code, 0, 2).'x.html',
