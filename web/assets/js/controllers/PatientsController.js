@@ -6,21 +6,21 @@ PatientsController.$inject = ['$scope', '$resource'];
 
 function PatientsController($scope, $resource) {
 
-    var patients = [];
+    var name = angular.element('#name');
+    var cardNumber = angular.element('#card_number');
 
-    $scope.findPatients = function(value) {
-        var Patients = $resource('/web/index_dev.php/api/patients/:name', {name: value})
-        Patients.query(
+    $scope.patients = [];
+
+    $scope.search = function() {
+        var Patients = $resource('web/index_dev.php/api/patients');
+
+        Patients.query({name: name.val()},
             function(patient) {
-                patients = patient.map(function(item){
-                    return item.name;
-                });
+                $scope.patients = patient;
             },
             function(error) {
-                console.log('it was not possible to receive the list of patients');
-                console.log(error);
+
             }
-        )
-        return patients;
-    };
+        );
+    }
 }

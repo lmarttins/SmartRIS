@@ -14,10 +14,18 @@ $app->get('/', function () use ($app) {
 ->bind('homepage')
 ;
 
-$app->get('/api/patients/{name}', function ($name) use ($app) {
-    $sql = "select id, name from patients where name like '%ALICE DAVI%'";
-    $patients = $app['db']->fetchAssoc($sql);
-    return new JsonResponse(array($patients));
+$app->get('/api/patients/', function (Request $request) use ($app) {
+
+    $params = $request->query->all();
+
+    $sql = "
+    select id_card_number, name from patients
+    where name like '%{$params['name']}%'
+    ";
+
+    $patients = $app['db']->fetchAll($sql);
+
+    return new JsonResponse($patients);
 });
 
 $app->get('/api/guides/', function () use ($app) {
