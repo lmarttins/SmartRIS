@@ -23,6 +23,8 @@
     "angular-datatables": "~0.5.4",
     "components-font-awesome": "~4.6.1",
     "angular-ui-bootstrap-typeahead": "~0.12.0",
-    "angular-bootstrap": "~1.3.2"
+    "angular-bootstrap": "~1.3.2",
+    "wenzhixin-multiple-select-angular": "~0.1.10",
+    "ng-multiselect": "~1.1.0"
   }
 }

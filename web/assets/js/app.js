@@ -1,8 +1,9 @@
 angular
     .module('smartris', [
-      'ngRoute',
-      'ngResource',
-      'ui.bootstrap'
+        'ngRoute',
+        'ngResource',
+        'ui.bootstrap',
+        'aurbano.multiselect'
     ])
     .config(function($interpolateProvider, $routeProvider) {
         // Define delimiter to views
@@ -20,13 +21,18 @@ angular
             controller: 'GuidesController'
         });
 
-        $routeProvider.when('/generate-guides', {
-            templateUrl: 'templates/partials/generate_guides.html',
-            controller: 'GenerateGuidesController'
-        });
-
         $routeProvider.when('/step-1', {
             templateUrl: 'templates/partials/patients.html',
             controller: 'PatientsController'
+        });
+
+        $routeProvider.when('/step-2', {
+            templateUrl: 'templates/partials/procedures.html',
+            controller: 'ProceduresController'
+        });
+
+        $routeProvider.when('/step-3', {
+            templateUrl: 'templates/partials/newGuide.html',
+            controller: 'NewGuideController'
         });
     });

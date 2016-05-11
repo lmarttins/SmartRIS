@@ -17,15 +17,32 @@ $app->get('/', function () use ($app) {
 $app->get('/api/patients/', function (Request $request) use ($app) {
 
     $params = $request->query->all();
+    $where = '';
 
-    $sql = "
-    select id_card_number, name from patients
-    where name like '%{$params['name']}%'
-    ";
+    if (isset($params['id']) && !empty($params['id'])) {
+        $where .= "id = {$params['id']} AND ";
+    }
+
+    if (isset($params['name']) && !empty($params['name'])) {
+        $where .= "name like '%{$params['name']}%' AND ";
+    }
+
+    if (isset($params['cardNumber']) && !empty($params['cardNumber'])) {
+        $where .= "id_card_number = {$params['cardNumber']} AND ";
+    }
+
+    $where = rtrim($where, 'AND ');
+
+    $sql = "select id, id_card_number, name from patients where $where";
 
     $patients = $app['db']->fetchAll($sql);
 
     return new JsonResponse($patients);
+});
+
+$app->get('/api/procedures/', function () use ($app) {
+    $procedures = $app['db']->fetchAll('select CodTermo, Termo from TAB_18');
+    return new JsonResponse($procedures);
 });
 
 $app->get('/api/guides/', function () use ($app) {

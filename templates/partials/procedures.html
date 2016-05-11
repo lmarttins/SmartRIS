@@ -1,0 +1,37 @@
+<div ng-controller="ProceduresController">
+    <h3 class="text-muted">Nova guia</h3>
+    <div class="row form-group">
+        <div class="col-xs-12">
+            <ul class="nav nav-pills nav-justified thumbnail setup-panel">
+                <li><a href="#step-1">
+                    <h4 class="list-group-item-heading">Passo 1</h4>
+                    <p class="list-group-item-text">Selecionar Paciente</p>
+                </a></li>
+                <li class="active"><a href="#step-2">
+                    <h4 class="list-group-item-heading">Passo 2</h4>
+                    <p class="list-group-item-text">Selecionar Procedimentos</p>
+                </a></li>
+                <li class="disabled"><a href="#step-3">
+                    <h4 class="list-group-item-heading">Passo 3</h4>
+                    <p class="list-group-item-text">Gerar Nova Guia</p>
+                </a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <div class="col-xs-12">
+                <multiselect placeholder="Selecionar procedimento..."
+                   ms-model="multiselect.selected"
+                   ms-config="multiselect.config"
+                   ms-options="multiselect.options">
+                </multiselect>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top:20px">
+        <div class="col-xs-12">
+            <a href="#/step-3" class="btn btn-primary pull-right">Avançar</a>
+        </div>
+    </div>
+</div>
