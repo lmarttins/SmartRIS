@@ -42,7 +42,8 @@ class GuideController
         }
 
         $idGuide = $app['guides']->save(array(
-            'id_patient' => $params['patient']
+            'id_patient' => $params['patient'],
+            'id_provider' => $params['provider']
         ));
 
         $idProcedure = $app['guides_procedures']->save(array(

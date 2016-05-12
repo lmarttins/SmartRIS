@@ -21,7 +21,7 @@ class GuideProcedureRepository extends Repository
     {
         $result = false;
         if (isset($data['procedures'])) {
-            foreach (explode(', ', $data['procedures']) as $key => $value) {
+            foreach (explode(',', $data['procedures']) as $key => $value) {
                 $result = $this->insert(array(
                     'id_guide' => $data['guide'],
                     'id_procedure' => $value

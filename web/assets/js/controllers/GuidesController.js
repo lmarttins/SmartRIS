@@ -12,7 +12,8 @@ function GuidesController($scope, GuideService, localStorageService) {
     $scope.save = function() {
         var newGuide = new GuideService({
             patient: localStorageService.get('patient'),
-            procedures: localStorageService.get('procedures')
+            procedures: localStorageService.get('procedures'),
+            provider: 1
         });
 
         GuideService.save(newGuide, function(data){

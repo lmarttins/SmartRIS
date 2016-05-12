@@ -5,9 +5,8 @@ angular
 ProceduresController.$inject = ['$scope', 'ProcedureService', '$sce', 'localStorageService'];
 
 function ProceduresController($scope, ProcedureService, $sce, localStorageService) {
-    $scope.procedureSelected = [];
-
-    var proceduresMock = [60000015, 60000023, 60000031, 60000040];
+    vm = this;
+    vm.procedureSelected = [];
 
     ProcedureService.query(
         function(procedure) {
@@ -40,7 +39,10 @@ function ProceduresController($scope, ProcedureService, $sce, localStorageServic
     };
 
     $scope.save = function() {
-        localStorageService.remove('procedures');
-        localStorageService.set('procedures', proceduresMock.join(', '));
+        vm.procedureSelected = $scope.multiselect.selected.map(function(each){
+            return each.codTermo;
+        });
+
+        localStorageService.set('procedures', vm.procedureSelected.join(','));
     }
 }

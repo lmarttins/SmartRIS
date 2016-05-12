@@ -44,10 +44,6 @@ function AllotmentStepOneController($scope, GuideService, $sce, localStorageServ
             return each.id;
         });
 
-        if (vm.guideSelected.length == 0) {
-            vm.alertError = true;
-        }
-
         localStorageService.set('guides', vm.guideSelected.join(','));
     }
 }

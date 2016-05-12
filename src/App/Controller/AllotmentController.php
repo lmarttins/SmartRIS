@@ -47,6 +47,10 @@ class AllotmentController
             'guides' => $params['guides']
         ));
 
+        if ($allotmentLastId) {
+            $message = array('success' => true);
+        }
+
         return new JsonResponse($message);
     }
 }
