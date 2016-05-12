@@ -5,5 +5,5 @@ angular
 AllotmentService.$inject = ['$resource'];
 
 function AllotmentService($resource) {
-    return $resource('web/index_dev.php/api/guides');
+    return $resource('web/index_dev.php/api/allotments');
 }

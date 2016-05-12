@@ -40,8 +40,13 @@ angular
             controller: 'GuidesController'
         });
 
-        $routeProvider.when('/allotment', {
-            templateUrl: 'templates/partials/allotment.html',
-            controller: 'AllotmentController'
+        $routeProvider.when('/allotment-step-1', {
+            templateUrl: 'templates/partials/allotment-step-1.html',
+            controller: 'AllotmentStepOneController'
+        });
+
+        $routeProvider.when('/allotment-step-2', {
+            templateUrl: 'templates/partials/allotment-step-2.html',
+            controller: 'AllotmentStepTwoController'
         });
     });

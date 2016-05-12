@@ -4,7 +4,7 @@ namespace App\Repository;
 
 use App\Repository;
 
-class GuideProcedure extends Repository
+class GuideProcedureRepository extends Repository
 {
     public function getTableName()
     {

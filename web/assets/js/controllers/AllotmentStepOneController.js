@@ -1,10 +1,14 @@
 angular
     .module('smartris')
-    .controller('AllotmentController', AllotmentController);
+    .controller('AllotmentStepOneController', AllotmentStepOneController);
 
-AllotmentController.$inject = ['$scope', 'GuideService', '$sce'];
+AllotmentStepOneController.$inject = ['$scope', 'GuideService', '$sce', 'localStorageService'];
 
-function AllotmentController($scope, GuideService, $sce) {
+function AllotmentStepOneController($scope, GuideService, $sce, localStorageService) {
+
+    var vm = this;
+    vm.guideSelected = [];
+    vm.alertError = false;
 
     GuideService.query(
         function(procedure) {
@@ -34,4 +38,16 @@ function AllotmentController($scope, GuideService, $sce) {
             }
         }
     };
+
+    $scope.save = function() {
+        vm.guideSelected = $scope.multiselect.selected.map(function(each){
+            return each.id;
+        });
+
+        if (vm.guideSelected.length == 0) {
+            vm.alertError = true;
+        }
+
+        localStorageService.set('guides', vm.guideSelected.join(','));
+    }
 }

@@ -11,6 +11,7 @@ use App\Provider\RepositoryServiceProvider;
 use App\Controller\PatientController;
 use App\Controller\GuideController;
 use App\Controller\ProcedureController;
+use App\Controller\AllotmentController;
 
 date_default_timezone_set('America/Sao_Paulo');
 
@@ -19,8 +20,10 @@ $app = new Application();
 $app->register(
     new RepositoryServiceProvider(), array(
         'repository.repositories' => array(
-            'guides' => 'App\Repository\Guide',
-            'guides_procedures' => 'App\Repository\GuideProcedure'
+            'guides' => 'App\Repository\GuideRepository',
+            'guides_procedures' => 'App\Repository\GuideProcedureRepository',
+            'allotments' => 'App\Repository\AllotmentRepository',
+            'allotments_guides' => 'App\Repository\AllotmentGuideRepository'
         )
     )
 );
@@ -59,9 +62,15 @@ $app['procedures.controller'] = $app->share(function() use ($app) {
     return new ProcedureController();
 });
 
+$app['allotments.controller'] = $app->share(function() use ($app) {
+    return new AllotmentController();
+});
+
 $app->get('/api/guides', 'guides.controller:index');
-$app->post('/api/guides', 'guides.controller:store');
 $app->get('/api/patients', 'patients.controller:index');
 $app->get('/api/procedures', 'procedures.controller:index');
+$app->post('/api/guides', 'guides.controller:store');
+$app->post('/api/allotments', 'allotments.controller:store');
+
 
 return $app;

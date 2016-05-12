@@ -1,7 +1,13 @@
-<div ng-controller="PatientsController">
+<div ng-controller="AllotmentStepOneController as vm">
     <h3 class="text-muted">Novo lote</h3>
     <div class="row form-group">
         <div class="col-xs-12">
+            <div class="alert alert-error alert-dismissible" role="alert" ng-show="vm.alertError">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>Erro!</strong> Deve ser selecionada ao menos uma guia.
+            </div>
             <ul class="nav nav-pills nav-justified thumbnail setup-panel">
                 <li class="active"><a href="#step-1">
                     <h4 class="list-group-item-heading">Passo 1</h4>
@@ -17,9 +23,10 @@
     <div class="row">
         <div class="form-group">
             <div class="col-xs-12">
+                <h4><i class="fa fa-file-text"></i> Guias</h4>
                 <div class="well">
                     <multiselect placeholder="Selecionar guia..."
-                       ms-model="procedureSelected"
+                       ms-model="multiselect.selected"
                        ms-config="multiselect.config"
                        ms-options="multiselect.options">
                     </multiselect>
@@ -29,7 +36,7 @@
     </div>
     <div class="row" style="margin-top:20px">
         <div class="col-xs-12">
-            <a href="#/step-3" class="btn btn-primary pull-right" ng-click="save()">Salvar</a>
+            <a href="#/allotment-step-2" class="btn btn-primary pull-right" ng-click="save();">Salvar</a>
         </div>
     </div>
 </div>
