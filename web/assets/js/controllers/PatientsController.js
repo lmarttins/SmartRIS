@@ -2,23 +2,18 @@ angular
     .module('smartris')
     .controller('PatientsController', PatientsController);
 
-PatientsController.$inject = ['$scope', '$resource', '$uibModal'];
+PatientsController.$inject = ['$scope', 'PatientService', '$uibModal'];
 
-function PatientsController($scope, $resource, $uibModal) {
-
-    var vm = this;
+function PatientsController($scope, PatientService, $uibModal) {
 
     $scope.patients = [];
     var name = angular.element('#name');
     var cardNumber = angular.element('#card_number');
-    var Patients = $resource('web/index_dev.php/api/patients');
 
     $scope.animationsEnabled = true;
 
-    $scope.hello = 'hello!';
-
     $scope.search = function() {
-        Patients.query({name: name.val(), cardNumber: cardNumber.val()},
+        PatientService.query({name: name.val(), cardNumber: cardNumber.val()},
             function(patient) {
                 $scope.patients = patient;
             },
@@ -29,7 +24,7 @@ function PatientsController($scope, $resource, $uibModal) {
     }
         
     $scope.open = function (id) {
-        Patients.query({id: id},
+        PatientService.query({id: id},
             function(patient) {
                 $scope.patients = patient;
             },

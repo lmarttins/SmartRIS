@@ -1,4 +1,4 @@
-<div ng-controller="PatientsController as vm">
+<div ng-controller="PatientsController">
     <h3 class="text-muted">Nova guia</h3>
     <div class="row form-group">
         <div class="col-xs-12">
@@ -56,7 +56,7 @@
                                     <i class="fa fa-gear"></i>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a href="javascript:;" ng-click="open(patient.id)">visualizar</a></li>
+                                    <li><a href="#" ng-click="open(patient.id); $event.preventDefault();">visualizar</a></li>
                                 </ul>
                             </div>
                         </td>

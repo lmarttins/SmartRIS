@@ -2,20 +2,25 @@ angular
     .module('smartris')
     .controller('GuidesController', GuidesController);
 
-GuidesController.$inject = ['$scope', '$resource'];
+GuidesController.$inject = ['$scope', 'GuideService', 'localStorageService'];
 
-function GuidesController($scope, $resource) {
-    $scope.guides = [];
+function GuidesController($scope, GuideService, localStorageService) {
+    var vm = this;
 
-    var Guides = $resource('/web/index_dev.php/api/guides');
+    vm.alertSuccess = false;
 
-    Guides.query(
-        function(guides) {
-            $scope.guides = guides;
-        },
-        function(erro) {
-            console.log('it was not possible to receive the list of guides');
-            console.log(erro);
-        }
-    );
+    $scope.save = function() {
+        var newGuide = new GuideService({
+            patient: localStorageService.get('patient'),
+            procedures: localStorageService.get('procedures')
+        });
+
+        GuideService.save(newGuide, function(data){
+            if (data.success) {
+                vm.alertSuccess = true;
+                localStorageService.remove('patient');
+                localStorageService.remove('procedures');
+            }
+        });
+    };
 }

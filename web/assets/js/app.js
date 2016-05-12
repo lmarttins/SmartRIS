@@ -3,12 +3,16 @@ angular
         'ngRoute',
         'ngResource',
         'ui.bootstrap',
-        'aurbano.multiselect'
+        'aurbano.multiselect',
+        'LocalStorageModule'
     ])
-    .config(function($interpolateProvider, $routeProvider) {
+    .config(function($interpolateProvider, $routeProvider, localStorageServiceProvider) {
         // Define delimiter to views
         $interpolateProvider.startSymbol('{[%');
         $interpolateProvider.endSymbol('%]}');
+
+        // Define set prefix localstorage
+        localStorageServiceProvider.setPrefix('smartris');
 
         // Define routes
         $routeProvider.when('/patients', {
@@ -33,6 +37,11 @@ angular
 
         $routeProvider.when('/step-3', {
             templateUrl: 'templates/partials/newGuide.html',
-            controller: 'NewGuideController'
+            controller: 'GuidesController'
+        });
+
+        $routeProvider.when('/allotment', {
+            templateUrl: 'templates/partials/allotment.html',
+            controller: 'AllotmentController'
         });
     });

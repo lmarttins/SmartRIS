@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "755752508fa807073ebf14cb3c989117",
-    "content-hash": "d29d1ebe14d83c3da8a3d913a234445c",
+    "hash": "63bdd2df9b32739de5304273a4171788",
+    "content-hash": "9aaaacb7a14f55745d1d3935ddbd5f41",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -517,6 +517,64 @@
                 "password"
             ],
             "time": "2014-11-20 16:49:30"
+        },
+        {
+            "name": "marcojanssen/silex-routing-service-provider",
+            "version": "1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/marcojanssen/silex-routing-service-provider.git",
+                "reference": "1fcc573237bd3ed9fce5e1fa1798daabf0f2a148"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/marcojanssen/silex-routing-service-provider/zipball/1fcc573237bd3ed9fce5e1fa1798daabf0f2a148",
+                "reference": "1fcc573237bd3ed9fce5e1fa1798daabf0f2a148",
+                "shasum": ""
+            },
+            "require": {
+                "silex/silex": "~1.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*",
+                "scrutinizer/ocular": "~1.1"
+            },
+            "suggest": {
+                "igorw/config-service-provider": "Allows registering providers with configuration"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "MJanssen\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marco Janssen",
+                    "email": "dev@marcojanssen.net"
+                },
+                {
+                    "name": "Samir Rachidi",
+                    "email": "sr@plusb.de"
+                }
+            ],
+            "description": "Silex provider for adding routes",
+            "keywords": [
+                "provider",
+                "route",
+                "routing",
+                "silex"
+            ],
+            "time": "2016-02-08 08:27:06"
         },
         {
             "name": "monolog/monolog",

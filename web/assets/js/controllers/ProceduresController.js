@@ -2,14 +2,14 @@ angular
     .module('smartris')
     .controller('ProceduresController', ProceduresController);
 
-ProceduresController.$inject = ['$scope', '$resource', '$sce'];
+ProceduresController.$inject = ['$scope', 'ProcedureService', '$sce', 'localStorageService'];
 
-function ProceduresController($scope, $resource, $sce) {
-    $scope.procedures = [];
+function ProceduresController($scope, ProcedureService, $sce, localStorageService) {
+    $scope.procedureSelected = [];
 
-    var Procedures = $resource('web/index_dev.php/api/procedures');
+    var proceduresMock = [60000015, 60000023, 60000031, 60000040];
 
-    Procedures.query(
+    ProcedureService.query(
         function(procedure) {
             $scope.multiselect.options = procedure.map(function(item){
               return {
@@ -25,17 +25,22 @@ function ProceduresController($scope, $resource, $sce) {
     );
 
     $scope.multiselect = {
-      selected: [],
-      options: [],
-      config: {
-        hideOnBlur: false,
-        showSelected: false,
-        itemTemplate: function(item){
-          return $sce.trustAsHtml(item.codTermo + ' - ' + item.termo);
-        },
-        labelTemplate: function(item){
-          return $sce.trustAsHtml(item.termo);
+        selected: [],
+        options: [],
+        config: {
+            hideOnBlur: false,
+            showSelected: true,
+            itemTemplate: function(item){
+              return $sce.trustAsHtml(item.codTermo + ' - ' + item.termo);
+            },
+            labelTemplate: function(item){
+              return $sce.trustAsHtml(item.termo);
+            }
         }
-      }
     };
+
+    $scope.save = function() {
+        localStorageService.remove('procedures');
+        localStorageService.set('procedures', proceduresMock.join(', '));
+    }
 }
