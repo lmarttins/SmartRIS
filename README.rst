@@ -3,6 +3,7 @@ SmartRIS
 Autor: Leandro Martins <lmarttinssilva@gmail.com>
 
 Configurações:
+
 Rodar o comando "composer install" na raiz do projeto.
 
 Acessar o arquivo "SmartRIS/src/app.php" e ajustar os parametros
