@@ -2,8 +2,10 @@ SmartRIS
 ==============
 Autor: Leandro Martins <lmarttinssilva@gmail.com>
 
-Configurações de banco:
-Acessar o arquiv "SmartRIS/src/app.php" e ajustar os parametros
+Configurações:
+Rodar o comando "composer install" na raiz do projeto.
+
+Acessar o arquivo "SmartRIS/src/app.php" e ajustar os parametros
 de conexao com o banco de acordo, segue o trecho
 
 $app->register(new DoctrineServiceProvider(), array(
