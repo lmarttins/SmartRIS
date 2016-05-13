@@ -49,4 +49,9 @@ angular
             templateUrl: 'templates/partials/allotment-step-2.html',
             controller: 'AllotmentStepTwoController'
         });
+
+        $routeProvider.when('/send-allotment', {
+            templateUrl: 'templates/partials/send-allotment.html',
+            controller: 'SendAllotmentController'
+        });
     });

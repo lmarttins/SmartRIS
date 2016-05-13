@@ -1,0 +1,13 @@
+<div ng-controller="SendAllotmentController as vm">
+    <h3 class="text-muted">Enviar lote</h3>
+    <div class="row form-group">
+        <div class="col-xs-12">
+            <div class="well">
+                <select class="form-control" ng-options="item as item.id for item in items track by item.id" ng-model="selected">
+                    <option value="">selecionar lote...</option>
+                </select>
+            </div>
+            <button class="btn btn-primary" ng-click="send()">Enviar</button>
+        </div>
+    </div>
+</div>

@@ -12,6 +12,7 @@ use App\Controller\PatientController;
 use App\Controller\GuideController;
 use App\Controller\ProcedureController;
 use App\Controller\AllotmentController;
+use App\Controller\XmlController;
 
 date_default_timezone_set('America/Sao_Paulo');
 
@@ -66,11 +67,16 @@ $app['allotments.controller'] = $app->share(function() use ($app) {
     return new AllotmentController();
 });
 
+$app['xml.controller'] = $app->share(function() use ($app) {
+    return new XmlController();
+});
+
 $app->get('/api/guides', 'guides.controller:index');
 $app->get('/api/patients', 'patients.controller:index');
 $app->get('/api/procedures', 'procedures.controller:index');
+$app->post('/api/xml', 'xml.controller:index');
+$app->get('/api/allotments', 'allotments.controller:index');
 $app->post('/api/guides', 'guides.controller:store');
 $app->post('/api/allotments', 'allotments.controller:store');
-
 
 return $app;

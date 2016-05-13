@@ -20,6 +20,9 @@ class AllotmentRepository extends Repository
 
     public function findAll()
     {
-        return $this->findAll();
+        return $this->db->fetchAll(sprintf("select id from %s",
+                $this->getTableName()
+            )
+        );
     }
 }
