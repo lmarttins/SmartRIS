@@ -6,6 +6,9 @@ Configurações:
 
 Rodar o comando "composer install" na raiz do projeto.
 
+É possível subir o webserver bult-in do php, 
+executando o comando "php -S localhost:8888" na raiz.
+
 Acessar o arquivo "SmartRIS/src/app.php" e ajustar os parametros
 de conexao com o banco de acordo, segue o trecho
 
