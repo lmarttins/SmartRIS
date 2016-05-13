@@ -24,7 +24,8 @@ $app->register(
             'guides' => 'App\Repository\GuideRepository',
             'guides_procedures' => 'App\Repository\GuideProcedureRepository',
             'allotments' => 'App\Repository\AllotmentRepository',
-            'allotments_guides' => 'App\Repository\AllotmentGuideRepository'
+            'allotments_guides' => 'App\Repository\AllotmentGuideRepository',
+            'xml' => 'App\Repository\XmlRepository'
         )
     )
 );
@@ -74,7 +75,7 @@ $app['xml.controller'] = $app->share(function() use ($app) {
 $app->get('/api/guides', 'guides.controller:index');
 $app->get('/api/patients', 'patients.controller:index');
 $app->get('/api/procedures', 'procedures.controller:index');
-$app->post('/api/xml', 'xml.controller:index');
+$app->post('/api/xml', 'xml.controller:store');
 $app->get('/api/allotments', 'allotments.controller:index');
 $app->post('/api/guides', 'guides.controller:store');
 $app->post('/api/allotments', 'allotments.controller:store');

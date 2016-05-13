@@ -15,6 +15,11 @@ angular
         localStorageServiceProvider.setPrefix('smartris');
 
         // Define routes
+        $routeProvider.when('/home', {
+            templateUrl: 'templates/partials/home.html',
+            controller: 'HomeController'
+        });
+
         $routeProvider.when('/patients', {
             templateUrl: 'templates/partials/patients.html',
             controller: 'PatientsController'
@@ -54,4 +59,6 @@ angular
             templateUrl: 'templates/partials/send-allotment.html',
             controller: 'SendAllotmentController'
         });
+
+        $routeProvider.otherwise({redirectTo: '/home'});
     });
